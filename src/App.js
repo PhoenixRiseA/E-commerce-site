@@ -1,5 +1,8 @@
 import "./App.css";
 import Button from "./components/UI/Button";
+import Header from "./components/Layout/Header";
+import Cart from "./components/Cart/Cart";
+import { Fragment, useState } from "react";
 const productsArr = [
   {
     title: "Colors",
@@ -35,29 +38,42 @@ const productsArr = [
 ];
 
 function App() {
+  const [cartIsShown, setCartIsShown] = useState(false);
+
+  const showCartHandler = () => {
+    setCartIsShown(true);
+  };
+  const hideCartHandler = () => {
+    setCartIsShown(false);
+  };
   const addToCartHandler = () => {
     console.log("Added to cart");
   };
+
   return (
-    <div className="App">
-      <header>
-        <h1>Products for sale</h1>
-        <p>cart</p>
-      </header>
-      <div className="App-items">
-        {productsArr.map((product) => (
-          <div className="App-item">
-            <img src={product.imageUrl} alt={product.title}></img>
-            <div className="item-details">
-              {product.title}: ${product.price}
-              <Button type="submit" onClick={addToCartHandler}>
-                Add to Cart
-              </Button>
+    <Fragment>
+      {cartIsShown && <Cart onClose={hideCartHandler}></Cart>}
+      <div className="App">
+        <Header onShowCart={showCartHandler} />
+        <div className="title">
+          <h1>Clraze</h1>
+        </div>
+
+        <div className="App-items">
+          {productsArr.map((product) => (
+            <div className="App-item" key={Math.random()}>
+              <img src={product.imageUrl} alt={product.title}></img>
+              <div className="item-details">
+                {product.title}: ${product.price}
+                <Button type="submit" onClick={addToCartHandler}>
+                  Add to Cart
+                </Button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </Fragment>
   );
 }
 
