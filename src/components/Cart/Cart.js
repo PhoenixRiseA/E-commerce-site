@@ -1,46 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
-const cartElements = [
-  {
-    title: "Colors",
+import CartContext from "../../store/cart-context";
 
-    price: 100,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    quantity: 2,
-  },
-
-  {
-    title: "Black and white Colors",
-    price: 50,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    quantity: 3,
-  },
-
-  {
-    title: "Yellow and Black Colors",
-
-    price: 70,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-
-    quantity: 1,
-  },
-];
-const hasItems = cartElements.length > 0;
 const Cart = (props) => {
+  const cartCtx = useContext(CartContext);
+  const hasItems = cartCtx.items.length > 0;
+
+  const decreaseCountHandler = (item) => {
+    cartCtx.removeItem(item);
+  };
+  const increaseCountHandler = (item) => {
+    cartCtx.addItem(item);
+  };
+
   const cartItems = (
     <ul className={classes["cart-items"]}>
-      {cartElements.map((ele) => {
+      {cartCtx.items.map((item) => {
         return (
           <CartItem
-            key={Math.random()}
-            title={ele.title}
-            price={ele.price}
-            imageUrl={ele.imageUrl}
-            quantity={ele.quantity}
+            id={item.id}
+            key={item.key}
+            title={item.title}
+            price={item.price}
+            imageUrl={item.imageUrl}
+            amount={item.quantity}
+            onRemove={decreaseCountHandler.bind(null, item)}
+            onAdd={increaseCountHandler.bind(null, item)}
           />
         );
       })}
@@ -49,6 +36,10 @@ const Cart = (props) => {
   return (
     <Modal onClose={props.onClose}>
       {cartItems}
+      <div className={classes.total}>
+        <span>Total Amount</span>
+        <span>{cartCtx.totalAmount}</span>
+      </div>
       <div className={classes.actions}>
         <button className={classes["button--alt"]} onClick={props.onClose}>
           Close

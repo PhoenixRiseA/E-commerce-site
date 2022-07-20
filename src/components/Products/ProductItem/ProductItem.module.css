@@ -1,0 +1,17 @@
+.productItem {
+  margin: 1rem 0;
+  background: #362e34;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 4rem;
+  color: rgb(14, 1, 1);
+  padding: 15px;
+  cursor: pointer;
+  border-color: black;
+  display: flexbox;
+  text-align: center;
+  align-items: center;
+  flex: wrap;
+}
+.product-details {
+  font-family: cursive;
+}

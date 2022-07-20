@@ -1,0 +1,14 @@
+.products {
+  margin: 0rem 0;
+  background: #111111;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  color: rgb(252, 245, 245);
+  padding: 1rem 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-radius: 0.5rem;
+  font-family: cursive;
+}
