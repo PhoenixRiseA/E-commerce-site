@@ -25,7 +25,7 @@ const CartProvider = (props) => {
       updateItems([...items, addItem]);
       console.log("first item added", addItem);
     }
-    updateTotalAmount(totalAmount + addItem.price * addItem.quantity);
+    updateTotalAmount(totalAmount + addItem.price);
   };
   const removeItemFromCartHandler = (remItem) => {
     const index = items.findIndex((item) => item.id === remItem.id);
@@ -50,6 +50,7 @@ const CartProvider = (props) => {
 
       updateItems(updatedItems);
     }
+    updateTotalAmount(totalAmount - remItem.price);
   };
 
   const cartContext = {
