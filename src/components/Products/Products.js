@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import classes from "./Products.module.css";
 import ProductItem from "./ProductItem/ProductItem";
+import ProductContext from "../../store/product-context";
 // import ProductItemForm from "./ProductItem/ProductItemForm";
 const productsArr = [
   {
@@ -38,10 +39,19 @@ const productsArr = [
 ];
 
 const Products = () => {
-  const productList = productsArr.map((product) => {
+  const productArrWithId = productsArr.map((product) => {
+    return { ...product, id: Math.random().toFixed(2).toString() };
+  });
+  console.log(productArrWithId);
+  const proCtx = useContext(ProductContext);
+  console.log(proCtx.items);
+  proCtx.items = [...productArrWithId];
+  console.log(proCtx.items);
+
+  const productList = productArrWithId.map((product) => {
     return (
       <ProductItem
-        id={Math.random().toFixed(2).toString()}
+        id={product.id}
         key={Math.random().toString()}
         title={product.title}
         price={product.price}
@@ -49,22 +59,8 @@ const Products = () => {
       />
     );
   });
+  // const dummyProp = <ProductDetail items={productList} />;
 
-  //   const productList = productsArr.map((props) => {
-  //     return (
-  //       <div className="product" key={Math.random()}>
-  //         <div>
-  //           <img src={props.imageUrl} alt={props.title}></img>
-  //           <div className="product-details">
-  //             {props.title}: ${props.price}
-  //           </div>
-  //         </div>
-  //         <div>
-  //           <ProductItemForm id={props.id} item={props} />
-  //         </div>
-  //       </div>
-  //     );
-  //   });
   return (
     <section className={classes.products}>
       <div>

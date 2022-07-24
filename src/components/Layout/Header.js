@@ -7,7 +7,7 @@ const Header = (props) => {
     <Fragment>
       <header className={classes.header}>
         <nav>
-          <div>
+          <ul>
             <li>
               <NavLink to="/home">Home</NavLink>
             </li>
@@ -20,10 +20,9 @@ const Header = (props) => {
             <li>
               <NavLink to="/contactUs">Contact Us</NavLink>
             </li>
-          </div>
+            <HeaderCartButton onShowCart={props.onShowCart} />
+          </ul>
         </nav>
-
-        <HeaderCartButton onShowCart={props.onShowCart} />
       </header>
     </Fragment>
   );

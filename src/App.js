@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Header from "./components/Layout/Header";
 import Cart from "./components/Cart/Cart";
 import { useState } from "react";
@@ -8,6 +8,7 @@ import Products from "./components/Products/Products";
 import Home from "./components/OtherPages/Home";
 import About from "./components/OtherPages/About";
 import ContactUs from "./components/OtherPages/ContactUs/ContactUs";
+import ProductDetail from "./components/Products/ProductItem/ProductDetail";
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
 
@@ -29,18 +30,23 @@ function App() {
       </div>
 
       <main className="main">
-        <Route path="/home">
-          <Home />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/products">
-          <Products></Products>
-        </Route>
-        <Route path="/contactUs">
-          <ContactUs />
-        </Route>
+        <Switch>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/products" exact>
+            <Products></Products>
+          </Route>
+          <Route path="/contactUs">
+            <ContactUs />
+          </Route>
+          <Route path="/products/:productId">
+            <ProductDetail />
+          </Route>
+        </Switch>
       </main>
     </CartProvider>
   );

@@ -9,17 +9,18 @@
   justify-content: center;
   background-color: rgb(233, 35, 21);
   align-content: center;
-  height: fit-content;
+  max-height: 10rem;
   display: flex;
-  box-sizing: border-box;
+
   border-radius: 0.5rem;
 }
 .title h1 {
   background-color: rgb(233, 35, 21);
+  padding: 1px;
 }
 .main {
   margin: 0rem 0;
-  background: #ff3a3a;
+  background: #a8050d;
   box-shadow: 0 2px 8px rgba(31, 9, 9, 0.26);
   color: rgb(252, 245, 245);
   padding: 1rem 2rem;
@@ -30,6 +31,7 @@
   flex-wrap: wrap;
   border-radius: 0.5rem;
   font-family: cursive;
+  height: fit-content;
 }
 
 .App-logo {

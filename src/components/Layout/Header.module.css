@@ -1,16 +1,38 @@
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 80%;
-  height: 3.5rem;
+  height: 5rem;
   background-color: #a8050d;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 0 10%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  z-index: 10;
-  border-radius: 1rem;
+}
+
+.header nav {
+  height: 100%;
+}
+
+.header ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.header li {
+  margin: 0 1rem;
+  width: 5rem;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+}
+
+.header a:hover,
+.header a:active,
+.header a.active {
+  color: #95bcf0;
+  padding-bottom: 0.25rem;
+  border-bottom: 4px solid #95bcf0;
 }
