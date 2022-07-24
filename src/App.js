@@ -7,6 +7,7 @@ import CartProvider from "./store/CartProvider";
 import Products from "./components/Products/Products";
 import Home from "./components/OtherPages/Home";
 import About from "./components/OtherPages/About";
+import ContactUs from "./components/OtherPages/ContactUs/ContactUs";
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
 
@@ -27,7 +28,7 @@ function App() {
         </div>
       </div>
 
-      <main>
+      <main className="main">
         <Route path="/home">
           <Home />
         </Route>
@@ -36,6 +37,9 @@ function App() {
         </Route>
         <Route path="/products">
           <Products></Products>
+        </Route>
+        <Route path="/contactUs">
+          <ContactUs />
         </Route>
       </main>
     </CartProvider>

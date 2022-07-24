@@ -1,0 +1,27 @@
+.form {
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  background-color: brown;
+  align-self: center;
+  justify-content: center;
+}
+.form fieldset {
+  align-items: center;
+}
+.form legend {
+  font-weight: bolder;
+  font-size: larger;
+}
+.form label {
+  font-weight: bold;
+  font-family: cursive;
+  color: black;
+}
+.form input {
+  border-radius: 0.5rem;
+  display: flex;
+}
+.form textarea {
+  border-radius: 0.5rem;
+}
