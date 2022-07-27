@@ -2,7 +2,7 @@ import "./App.css";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Header from "./components/Layout/Header";
 import Cart from "./components/Cart/Cart";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import CartProvider from "./store/CartProvider";
 import Products from "./components/Products/Products";
 import Home from "./components/OtherPages/Home";
@@ -10,8 +10,10 @@ import About from "./components/OtherPages/About";
 import ContactUs from "./components/OtherPages/ContactUs/ContactUs";
 import ProductDetail from "./components/Products/ProductItem/ProductDetail";
 import AuthForm from "./components/OtherPages/Auth/AuthForm";
+import AuthContext from "./store/auth-context";
 function App() {
-  // const authCtx = useContext();
+  const authCtx = useContext(AuthContext);
+
   const [cartIsShown, setCartIsShown] = useState(false);
 
   const showCartHandler = () => {
@@ -36,15 +38,20 @@ function App() {
           <Route path="/" exact>
             <Home />
           </Route>
-          <Route path="/auth">
-            <AuthForm />
-          </Route>
+          {!authCtx.isLoggedIn && (
+            <Route path="/auth">
+              <AuthForm />
+            </Route>
+          )}
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/products" exact>
-            <Products></Products>
-          </Route>
+          {authCtx.isLoggedIn && (
+            <Route path="/products" exact>
+              <Products></Products>
+            </Route>
+          )}
+
           <Route path="/contactUs">
             <ContactUs />
           </Route>
@@ -52,7 +59,7 @@ function App() {
             <ProductDetail />
           </Route>
           <Route path="*">
-            <Redirect to="/" />
+            <Redirect to="/auth" />
           </Route>
         </Switch>
       </main>

@@ -17,7 +17,7 @@ const Header = (props) => {
         <nav>
           <ul>
             <li>
-              <NavLink to="/home">Home</NavLink>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
               <NavLink to="/products">Products</NavLink>
@@ -28,9 +28,11 @@ const Header = (props) => {
             <li>
               <NavLink to="/contactUs">Contact Us</NavLink>
             </li>
-            <li>
-              <NavLink to="/auth">Login</NavLink>
-            </li>
+            {!isLoggedIn && (
+              <li>
+                <NavLink to="/auth">Login</NavLink>
+              </li>
+            )}
 
             <li>
               <HeaderCartButton onShowCart={props.onShowCart} />
