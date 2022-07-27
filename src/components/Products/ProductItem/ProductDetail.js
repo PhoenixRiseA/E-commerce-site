@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import classes from "./ProductDetail.module.css";
 import ProductContext from "../../../store/product-context";
 // import CartContext from "../../../store/cart-context";
 import ProductItemForm from "./ProductItemForm";
@@ -20,10 +21,9 @@ const ProductDetail = () => {
     <section>
       <h1>Product Detail</h1>
 
-      <div className="productItem">
+      <div className={classes["productItem"]}>
         <h1>{product.title}</h1>
         <div>
-          {/* <img src={product.imageUrl} alt={product.title}></img> */}
           <Zoom
             img={product.imageUrl}
             zoomScale={3}

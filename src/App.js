@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Header from "./components/Layout/Header";
 import Cart from "./components/Cart/Cart";
 import { useState } from "react";
@@ -9,7 +9,9 @@ import Home from "./components/OtherPages/Home";
 import About from "./components/OtherPages/About";
 import ContactUs from "./components/OtherPages/ContactUs/ContactUs";
 import ProductDetail from "./components/Products/ProductItem/ProductDetail";
+import AuthForm from "./components/OtherPages/Auth/AuthForm";
 function App() {
+  // const authCtx = useContext();
   const [cartIsShown, setCartIsShown] = useState(false);
 
   const showCartHandler = () => {
@@ -31,8 +33,11 @@ function App() {
 
       <main className="main">
         <Switch>
-          <Route path="/home">
+          <Route path="/" exact>
             <Home />
+          </Route>
+          <Route path="/auth">
+            <AuthForm />
           </Route>
           <Route path="/about">
             <About />
@@ -45,6 +50,9 @@ function App() {
           </Route>
           <Route path="/products/:productId">
             <ProductDetail />
+          </Route>
+          <Route path="*">
+            <Redirect to="/" />
           </Route>
         </Switch>
       </main>

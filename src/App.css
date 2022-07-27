@@ -2,22 +2,22 @@
   text-align: center;
 }
 .title {
+  margin: 0.5 rem 0.5 rem;
   font-style: oblique;
   font-size: xx-large;
   font-weight: bold;
-  text-align: center;
+  /* text-align: center; */
   justify-content: center;
   background-color: rgb(233, 35, 21);
   align-content: center;
-  max-height: 10rem;
+  max-height: 5rem;
   display: flex;
-
+  align-items: center;
   border-radius: 0.5rem;
 }
-.title h1 {
+/* .title h1 {
   background-color: rgb(233, 35, 21);
-  padding: 1px;
-}
+} */
 .main {
   margin: 0rem 0;
   background: #a8050d;
