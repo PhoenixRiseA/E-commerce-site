@@ -11,6 +11,7 @@ const productsArr = [
     price: 100,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+    id: "e1",
   },
 
   {
@@ -19,6 +20,7 @@ const productsArr = [
     price: 50,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+    id: "e2",
   },
 
   {
@@ -27,6 +29,7 @@ const productsArr = [
     price: 70,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+    id: "e3",
   },
 
   {
@@ -35,20 +38,20 @@ const productsArr = [
     price: 100,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+    id: "e4",
   },
 ];
 
 const Products = () => {
-  const productArrWithId = productsArr.map((product) => {
-    return { ...product, id: Math.random().toFixed(2).toString() };
-  });
-  console.log(productArrWithId);
-  const proCtx = useContext(ProductContext);
-  console.log(proCtx.items);
-  proCtx.items = [...productArrWithId];
-  console.log(proCtx.items);
+  // const productArrWithId = productsArr.map((product) => {
+  //   return { ...product, id: Math.random().toFixed(2).toString() };
+  // });
 
-  const productList = productArrWithId.map((product) => {
+  const proCtx = useContext(ProductContext);
+
+  proCtx.items = [...productsArr];
+
+  const productList = productsArr.map((product) => {
     return (
       <ProductItem
         id={product.id}

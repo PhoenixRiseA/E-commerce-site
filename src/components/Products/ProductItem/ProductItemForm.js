@@ -17,7 +17,7 @@ const ProductItemForm = (props) => {
         label="Quantity"
         input={{
           id: "quantity__" + props.id,
-
+          key: Math.random().toString(),
           type: "number",
           min: "1",
           max: "5",

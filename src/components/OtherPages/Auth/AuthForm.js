@@ -46,7 +46,10 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        authCtx.login(data.idToken);
+        const loginEmail = enteredEmail.replace(/[^a-zA-Z ]/g, "");
+        authCtx.login(data.idToken, loginEmail);
+        console.log(data);
+
         history.replace("/products");
       })
       .catch((err) => {
