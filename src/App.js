@@ -11,6 +11,7 @@ import ContactUs from "./components/OtherPages/ContactUs/ContactUs";
 import ProductDetail from "./components/Products/ProductItem/ProductDetail";
 import AuthForm from "./components/OtherPages/Auth/AuthForm";
 import AuthContext from "./store/auth-context";
+import Footer from "./components/Layout/Footer";
 function App() {
   const authCtx = useContext(AuthContext);
 
@@ -28,9 +29,9 @@ function App() {
       {cartIsShown && <Cart onClose={hideCartHandler}></Cart>}
       <div className="App">
         <Header onShowCart={showCartHandler} />
-        <div className="title">
-          <h1>Clraze</h1>
-        </div>
+      </div>
+      <div className="title">
+        <h1>Clraze</h1>
       </div>
 
       <main className="main">
@@ -63,6 +64,7 @@ function App() {
           </Route>
         </Switch>
       </main>
+      <Footer />
     </CartProvider>
   );
 }

@@ -2,11 +2,12 @@
   font: inherit;
   padding: 0.5rem 1.5rem;
   border: 1px solid #353434;
-  color: white;
-  background: #a8050d;
+  color: rgb(248, 239, 239);
+  background: #352f2f;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.26);
   cursor: pointer;
   border-radius: 0.8rem;
+  font-weight: bold;
 }
 
 .button:focus {

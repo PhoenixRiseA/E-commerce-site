@@ -1,26 +1,27 @@
 .App {
   text-align: center;
+  background-color: black;
+  display: flex;
 }
 .title {
-  margin: 0.5 rem 0.5 rem;
+  width: 100%;
   font-style: oblique;
-  font-size: xx-large;
+  font-size: x-large;
   font-weight: bold;
   /* text-align: center; */
   justify-content: center;
-  background-color: rgb(233, 35, 21);
+  background-color: rgb(173, 128, 125);
   align-content: center;
-  max-height: 5rem;
+
   display: flex;
   align-items: center;
-  border-radius: 0.5rem;
 }
 /* .title h1 {
   background-color: rgb(233, 35, 21);
 } */
 .main {
-  margin: 0rem 0;
-  background: #a8050d;
+  position: relative;
+  background: #0f0102;
   box-shadow: 0 2px 8px rgba(31, 9, 9, 0.26);
   color: rgb(252, 245, 245);
   padding: 1rem 2rem;
@@ -29,9 +30,9 @@
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  border-radius: 0.5rem;
+  border-radius: 0.1rem;
   font-family: cursive;
-  height: fit-content;
+  padding-bottom: 5rem;
 }
 
 .App-logo {
@@ -43,28 +44,6 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-.App-items {
-  margin: 0rem 0;
-  background: #131212;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  color: white;
-  padding: 1rem 2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  border-radius: 0.5rem;
-}
-.App-item {
-  margin: 1rem 0;
-  background: #362e34;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 1rem;
-  color: white;
-  padding: 1rem 2rem;
-  cursor: pointer;
 }
 
 .App-link {

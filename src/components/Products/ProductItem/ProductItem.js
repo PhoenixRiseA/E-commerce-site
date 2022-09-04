@@ -12,7 +12,10 @@ const ProductItem = (props) => {
         <Link to={`/products/${props.id}`}>{props.title}</Link>
       </h1>
       <div>
-        <img src={props.imageUrl} alt={props.title}></img>
+        <Link to={`/products/${props.id}`}>
+          <img src={props.imageUrl} alt={props.title}></img>
+        </Link>
+
         <div className="product-details">{price}</div>
       </div>
       <ProductItemForm id={props.id} item={props} />

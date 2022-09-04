@@ -5,6 +5,7 @@
   background-color: brown;
   align-self: center;
   justify-content: center;
+  height: 30rem;
 }
 .form fieldset {
   align-items: center;

@@ -13,7 +13,7 @@ const HeaderCartButton = (props) => {
   // }, 0);
   useEffect(() => {
     fetch(
-      `https://crudcrud.com/api/0f329a760b2e47b9b57b05ef04f77309/cartItems${authCtx.email}`
+      `https://shoppingapp-4aebd-default-rtdb.firebaseio.com/${authCtx.email}/cartItems.json`
     )
       .then((res) => {
         if (res.ok) {
@@ -22,7 +22,18 @@ const HeaderCartButton = (props) => {
             // const numberOfCartItems = data.reduce((curNumber, item) => {
             //   return parseInt(curNumber) + parseInt(item.quantity);
             // }, 0);
-            const numberOfCartItems = data.length;
+            const loadedData = [];
+            for (const key in data) {
+              loadedData.push({
+                key: key,
+                id: data[key].id,
+                price: data[key].price,
+                amount: data[key].quantity,
+                quantity: data[key].quantity,
+                imageUrl: data[key].imageUrl,
+              });
+            }
+            const numberOfCartItems = loadedData.length;
             setNumberOfCartItems(numberOfCartItems);
           });
         }

@@ -1,7 +1,7 @@
 .header {
-  width: 80%;
+  width: 100%;
   height: 5rem;
-  background-color: #a8050d;
+  background-color: #0c0102;
   padding: 0 10%;
   display: flex;
   align-items: center;
@@ -10,21 +10,23 @@
 
 .header nav {
   height: 100%;
+  width: 100%;
 }
 
 .header ul {
   height: 100%;
+  width: 100%;
   list-style: none;
   display: flex;
   padding: 0;
   margin: 0;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .header li {
   margin: 0 1rem;
-  width: 5rem;
+  width: fit-content;
 }
 
 .header a {
@@ -35,7 +37,8 @@
 .header a:hover,
 .header a:active,
 .header a.active {
-  color: #95bcf0;
+  color: rgb(173, 128, 125);
   padding-bottom: 0.25rem;
-  border-bottom: 4px solid #95bcf0;
+  margin: 1rem;
+  border-bottom: 4px solid rgb(173, 128, 125);
 }

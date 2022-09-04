@@ -3,7 +3,7 @@ import classes from "./Header.module.css";
 import HeaderCartButton from "./HeaderCartButton";
 import { NavLink } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
-// import Button from "../UI/Button";
+import Button from "../UI/Button";
 const Header = (props) => {
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
@@ -17,36 +17,67 @@ const Header = (props) => {
         <nav>
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink
+                className={(navData) =>
+                  navData.isActive ? classes.active : ""
+                }
+                to="/"
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/products">Products</NavLink>
+              <NavLink
+                className={(navData) =>
+                  navData.isActive ? classes.active : ""
+                }
+                to="/products"
+              >
+                Products
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/about">About</NavLink>
+              <NavLink
+                className={(navData) =>
+                  navData.isActive ? classes.active : ""
+                }
+                to="/about"
+              >
+                About
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/contactUs">Contact Us</NavLink>
+              <NavLink
+                className={(navData) =>
+                  navData.isActive ? classes.active : ""
+                }
+                to="/contactUs"
+              >
+                Contact Us
+              </NavLink>
             </li>
             {!isLoggedIn && (
               <li>
-                <NavLink to="/auth">Login</NavLink>
+                <NavLink
+                  className={(navData) =>
+                    navData.isActive ? classes.active : ""
+                  }
+                  to="/auth"
+                >
+                  Login
+                </NavLink>
               </li>
             )}
-
-            <li>
-              <HeaderCartButton onShowCart={props.onShowCart} />
-            </li>
-            {/* {!isLoggedIn && (
+            {isLoggedIn && (
               <li>
-                <NavLink to="/auth"></NavLink>
+                <HeaderCartButton onShowCart={props.onShowCart} />
               </li>
-            )} */}
-            {/* {isLoggedIn && (
+            )}
+            {isLoggedIn && (
               <li>
-                <Button onClick={onLogoutHandler}>Logout</Button>
+                <Button onClick={authCtx.logout}>Logout</Button>
               </li>
-            )} */}
+            )}
           </ul>
         </nav>
       </header>

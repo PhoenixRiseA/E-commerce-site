@@ -1,9 +1,16 @@
 import React, { useContext, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../../../store/auth-context";
-// import classes from "./AuthForm.module.css";
+import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
+  const [loginState, setLoginState] = useState(true);
+  const switchModeHandler = (e) => {
+    e.preventDefault();
+    const audioEl = document.getElementsByClassName("audio-element")[0];
+    audioEl.play();
+    setLoginState((state) => !state);
+  };
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -46,6 +53,7 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
+        console.log(data);
         const loginEmail = enteredEmail.replace(/[^a-zA-Z ]/g, "");
         authCtx.login(data.idToken, loginEmail);
         console.log(data);
@@ -59,8 +67,8 @@ const AuthForm = () => {
 
   return (
     <section>
-      <h1>Login</h1>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} className={classes.form}>
+        {loginState ? <h1>Login</h1> : <h1>Sign up</h1>}
         <label htmlFor="email">Your Email</label>
         <input type="email" id="email" ref={emailInputRef} required />
         <br />
@@ -68,9 +76,32 @@ const AuthForm = () => {
         <input type="password" id="password" ref={passwordInputRef} required />
         <br />
         <div>
-          <button>{loading ? "loading" : "login"}</button>
+          {loginState && (
+            <button type="submit" className={classes.button}>
+              {loading ? "loading" : "login"}
+            </button>
+          )}
+          {!loginState && (
+            <button type="submit" className={classes.button}>
+              {loading ? "loading" : "sign up"}
+            </button>
+          )}
         </div>
       </form>
+      <div className={classes.isLoggedIn}>
+        {loginState ? (
+          <button className={classes.toggle} onClick={switchModeHandler}>
+            Create new acc
+          </button>
+        ) : (
+          <button className={classes.toggle} onClick={switchModeHandler}>
+            Login with existing account
+          </button>
+        )}
+        <audio className="audio-element">
+          <source src="https://assets.coderrocketfuel.com/pomodoro-times-up.mp3"></source>
+        </audio>
+      </div>
     </section>
   );
 };

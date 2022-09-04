@@ -23,25 +23,43 @@ const Cart = (props) => {
     },
     [cartCtx]
   );
+
+  const removeAll = useCallback(
+    (item) => {
+      cartCtx.removeAll(item);
+    },
+    [cartCtx]
+  );
   useEffect(() => {
     fetch(
-      `https://crudcrud.com/api/0f329a760b2e47b9b57b05ef04f77309/cartItems${authCtx.email}`
+      `https://shoppingapp-4aebd-default-rtdb.firebaseio.com//${authCtx.email}/cartItems.json`
     ).then((res) => {
       if (res.ok) {
         return res.json().then((data) => {
           console.log(data);
-          const cartList = data.map((item) => {
+          const loadedData = [];
+          for (const key in data) {
+            loadedData.push({
+              id: data[key].id,
+              key: key,
+              title: data[key].title,
+              price: data[key].price,
+              imageUrl: data[key].imageUrl,
+              amount: data[key].quantity,
+            });
+          }
+          console.log(loadedData);
+          const cartList = loadedData.map((item) => {
             return (
               <CartItem
                 id={item.id}
-                _id={item._id}
-                key={item.key}
                 title={item.title}
                 price={item.price}
                 imageUrl={item.imageUrl}
-                amount={item.quantity}
+                amount={item.amount}
                 onRemove={decreaseCountHandler.bind(null, item)}
                 onAdd={increaseCountHandler.bind(null, item)}
+                onRemoveAll={removeAll.bind(null, item)}
               />
             );
           });
@@ -50,7 +68,14 @@ const Cart = (props) => {
         });
       }
     });
-  }, [authCtx.email, cartCtx, increaseCountHandler, decreaseCountHandler]);
+  }, [
+    authCtx.email,
+    cartCtx,
+    increaseCountHandler,
+    decreaseCountHandler,
+    removeAll,
+    setCartItems,
+  ]);
 
   console.log(cartItems);
 
